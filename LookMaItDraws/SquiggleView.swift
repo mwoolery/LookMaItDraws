@@ -11,68 +11,58 @@ import UIKit
 class SquiggleView: UIView {
     
     
-    var dots:[CGPoint] = []
-    var squiggle:[[CGPoint]] = []
+    // array of our lines that are drawn
+    var squiggle:[UIBezierPath] = []
+    // list of colors that the buttons corrospond to
     var colors:[UIColor] = [UIColor.black, UIColor.red, UIColor.orange, UIColor.yellow, UIColor.green, UIColor.blue, UIColor.purple]
+    // button sets this to fetch the color from colors array
     var colorIndex:Int = 0
-    var currentColor:[Int] = []
-    
+    // current color of the line that is being drawn.
+    var currentColor:[UIColor] = []
+    //index to be used for
+    var num = 0
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        dots.append(touches.first!.location(in: self))
-        currentColor.append(colorIndex)
+        // make a new UIBezierPath
+        squiggle.append(UIBezierPath())
+        // move to location to start line
+        squiggle[num].move(to: (touches.first!.location(in: self)))
+        // used to keeps track of the color of the line
+        currentColor.append(colors[colorIndex])
         setNeedsDisplay()
         
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        dots.append(touches.first!.location(in: self))
-        currentColor.append(colorIndex)
+        // add lines between points
+        squiggle[num].addLine(to: touches.first!.location(in: self))
+       
         setNeedsDisplay()
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        dots.append(touches.first!.location(in: self))
-        squiggle.append(dots)
-        currentColor.append(colorIndex)
-        
-        dots = []
+        // increment num
+        num = num + 1
         setNeedsDisplay()
     }
     
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
+ 
     override func draw(_ rect: CGRect) {
-        // Drawing code
+        // make sure it is not empty to avoid an exception
         if squiggle.count == 0 {
             return
         }
-        if squiggle[0].count == 0{
-            return
-        }
-        let bezier = UIBezierPath()
-        
-        for line in 0...squiggle.count - 1 {
-            
-            bezier.move(to:squiggle[line][0])
-            for dot in 0...squiggle[line].count - 1{
-                bezier.addLine(to: squiggle[line][dot])
-                
-            }
-            let colorSetting = currentColor[line]
-            print(colorSetting)
-            colors[colorSetting].setStroke()
-            bezier.stroke()
+        // draw the paths
+        for i in 0...squiggle.count - 1 {
+            currentColor[i].setStroke()
+            squiggle[i].stroke()
         }
         
-        //        for dot in dots {
-//            bezier.addLine(to: dot)
-//
-//        }
+
  
         
         
     }
-    
+    //buttons set color index
     @IBAction func purpleBTN(_ sender: Any) {
         colorIndex = 6
     }
@@ -90,6 +80,14 @@ class SquiggleView: UIView {
     }
     @IBAction func redBTN(_ sender: Any) {
         colorIndex = 1
+    }
+    // resets everything so it is blank again
+    @IBAction func clearBTN(_ sender: Any) {
+        squiggle = []
+        currentColor = []
+        num = 0
+        colorIndex = 0
+        setNeedsDisplay()
     }
     
 }
