@@ -14,6 +14,7 @@
 		3FE791971FCB96250042EF3C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3FE791951FCB96250042EF3C /* LaunchScreen.storyboard */; };
 		3FE791A21FCB96250042EF3C /* LookMaItDrawsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE791A11FCB96250042EF3C /* LookMaItDrawsTests.swift */; };
 		3FE791AD1FCB96250042EF3C /* LookMaItDrawsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE791AC1FCB96250042EF3C /* LookMaItDrawsUITests.swift */; };
+		3FE791BB1FCB96800042EF3C /* SquiggleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE791BA1FCB96800042EF3C /* SquiggleView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		3FE791A81FCB96250042EF3C /* LookMaItDrawsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LookMaItDrawsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FE791AC1FCB96250042EF3C /* LookMaItDrawsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LookMaItDrawsUITests.swift; sourceTree = "<group>"; };
 		3FE791AE1FCB96250042EF3C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3FE791BA1FCB96800042EF3C /* SquiggleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquiggleView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +100,7 @@
 			isa = PBXGroup;
 			children = (
 				3FE7918C1FCB96250042EF3C /* AppDelegate.swift */,
+				3FE791BA1FCB96800042EF3C /* SquiggleView.swift */,
 				3FE7918E1FCB96250042EF3C /* ViewController.swift */,
 				3FE791901FCB96250042EF3C /* Main.storyboard */,
 				3FE791931FCB96250042EF3C /* Assets.xcassets */,
@@ -260,6 +263,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3FE7918F1FCB96250042EF3C /* ViewController.swift in Sources */,
+				3FE791BB1FCB96800042EF3C /* SquiggleView.swift in Sources */,
 				3FE7918D1FCB96250042EF3C /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
